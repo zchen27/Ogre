@@ -19,7 +19,11 @@ public class Location implements Comparable
 		N, S, NW, SW, NE, SE
 	}
 	
-	
+	public Location(int c, int r)
+	{
+		col = c;
+		row = r;
+	}
 	
 	@Override
 	public int compareTo(Object o)
@@ -58,7 +62,19 @@ public class Location implements Comparable
 		switch(dir)
 		{
 			case N:
-				
+				return new Location(col, row - 1);
+			case NE:
+				return new Location(col + 1, row -1);
+			case NW:
+				return new Location(col - 1, row);
+			case S:
+				return new Location(col, row + 1);
+			case SE:
+				return new Location(col + 1, row);
+			case SW:
+				return new Location(col - 1, row);
+			default:
+				return null;
 		}
 	}
 	
