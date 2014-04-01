@@ -13,6 +13,12 @@ public class Location implements Comparable
 {
 	private int col;
 	private int row;
+	private boolean N;
+	private boolean NE;
+	private boolean NW;
+	private boolean S;
+	private boolean SE;
+	private boolean SW;
 	
 	public enum Direction
 	{
