@@ -41,6 +41,7 @@ public class Location implements Comparable
 		return 0;
 	}
 	
+	@Override
 	public boolean equals(Object o)
 	{
 		Location other = (Location) o;
@@ -83,5 +84,7 @@ public class Location implements Comparable
 				return null;
 		}
 	}
+	
+	
 	
 }
