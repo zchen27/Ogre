@@ -9,13 +9,39 @@
  */
 public abstract class Weapon
 {	
-	protected int defense;
-	
 	protected int attack;
-	
+	protected int defense;
 	protected int range;
+	private Status status = Status.ALIVE;
+	private boolean reloading = false;
 	
-	private Status status;
+	public void die()
+	{
+		status = Status.DEAD;
+	}
 	
-	private boolean reloading;
+	public void fire()
+	{
+		reloading = true;
+	}
+	
+	public void refresh()
+	{
+		reloading = false;
+	}
+	
+	public int getAttack()
+	{
+		return attack;
+	}
+		
+	public int getDefense()
+	{
+		return defense;
+	}
+	
+	public int getRange()
+	{
+		return range;
+	}
 }
