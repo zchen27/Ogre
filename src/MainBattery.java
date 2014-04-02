@@ -7,11 +7,10 @@
 public class MainBattery extends Weapon
 {
 	
-	MainBattery()
+	public MainBattery()
 	{
 		super.attack = 4;
 		super.range = 3;
 		super.defense = 4;
 	}
-	
 }
