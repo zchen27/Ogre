@@ -19,6 +19,7 @@ public class Location implements Comparable
 	private boolean S;
 	private boolean SE;
 	private boolean SW;
+	private boolean isCrater = false;
 	
 	public enum Direction
 	{
@@ -85,6 +86,13 @@ public class Location implements Comparable
 		}
 	}
 	
+	public void setCrater(boolean b)
+	{
+		isCrater = b;
+	}
 	
-	
+	public boolean isCrater()
+	{
+		return isCrater;
+	}
 }
