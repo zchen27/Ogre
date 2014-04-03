@@ -14,9 +14,9 @@ public abstract class Ogre extends Unit {
     
     protected ArrayList<MainBattery> main;
     protected ArrayList<SecondaryBattery> secondary;
-    protected ArrayList<MissileRacks> rack;
+    protected ArrayList<MissileTube> rack;
     protected ArrayList<ExternalMissile> external;
-    protected ArrayList<AntiPersonnel> ap;
+    protected ArrayList<Antipersonnel> ap;
     
     int internalMissile;
     String className;
@@ -34,7 +34,7 @@ public abstract class Ogre extends Unit {
         
     }
     
-    public int getMissileRacks(){
+    public int getMissileTube(){
         
     }
     
