@@ -7,6 +7,6 @@
  *
  * @author ldittm0798
  */
-public class StandardGEV {
+public class StandardGEV extends GEV{
     
 }

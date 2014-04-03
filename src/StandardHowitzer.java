@@ -7,6 +7,6 @@
  *
  * @author ldittm0798
  */
-public class StandardHowitzer {
+public class StandardHowitzer extends Armor{
     
 }

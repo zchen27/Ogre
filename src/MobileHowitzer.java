@@ -7,6 +7,6 @@
  *
  * @author ldittm0798
  */
-public class MobileHowitzer {
+public class MobileHowitzer extends Armor{
     
 }

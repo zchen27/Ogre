@@ -18,15 +18,15 @@ public abstract class Unit {
         status = Status.DEAD;
     }
     
-    void placeSelfOnGrid(Location loc){
+    public void placeSelfOnGrid(Location loc){
         //
     }
     
-    void move(Location loc){
+   public void move(Location loc){
         //
     }
     
-    boolean checkLocation(Location loc){
+    public boolean checkLocation(Location loc){
         //
     }
     

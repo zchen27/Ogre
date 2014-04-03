@@ -22,71 +22,71 @@ public abstract class Ogre extends Unit {
     String className;
     String unitName;
     
-    int getTracks(){
+    public int getTracks(){
         
     }
     
-    int getMainBattery(){
+    public int getMainBattery(){
         
     }
     
-    int getSecondaryBattery(){
+    public int getSecondaryBattery(){
         
     }
     
-    int getMissileRacks(){
+    public int getMissileRacks(){
         
     }
     
-    int getRemainingInternalMissiles(){
+    public int getRemainingInternalMissiles(){
         
     }
     
-    void mainBatteryAttack(Location loc){
+    public void mainBatteryAttack(Location loc){
         
     }
     
-    void secondaryBatteryAttack(Location loc){
+    public void secondaryBatteryAttack(Location loc){
         
     }
     
-    void externaMissileAttack(Location loc){
+    public void externaMissileAttack(Location loc){
         
     }
     
-    void internalMissileAttack(Location loc){
+    public void internalMissileAttack(Location loc){
         
     }
     
-    void apAttack(Location loc){
+    public void apAttack(Location loc){
         
     }
     
-    void overrun(Location loc){
+    public void overrun(Location loc){
         
     }
     
-    void hitMainBattery(){
+    public void hitMainBattery(){
         
     }
     
-    void hitSecondaryBattery(){
+    public void hitSecondaryBattery(){
         
     }
     
-    void hitTracks(){
+    public void hitTracks(){
         
     }
     
-    @Override void move(){
+    @Override public void move(Location loc){
         
     }
     
-    @Override void die(){
+    @Override public void die(){
         
     }
     
-    void lastResult(){
+    public void lastResult(){
         
     }
     

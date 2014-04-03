@@ -7,6 +7,6 @@
  *
  * @author ldittm0798
  */
-public class HeavyTank {
+public class HeavyTank extends Armor{
     
 }

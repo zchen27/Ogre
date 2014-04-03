@@ -7,6 +7,6 @@
  *
  * @author ldittm0798
  */
-public class MissileTank {
+public class MissileTank extends Armor{
     
 }

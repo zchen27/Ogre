@@ -7,6 +7,6 @@
  *
  * @author ldittm0798
  */
-public class LightTank {
+public class LightTank extends Armor{
     
 }

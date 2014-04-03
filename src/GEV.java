@@ -7,6 +7,6 @@
  *
  * @author ldittm0798
  */
-public class GEV {
+public abstract class GEV extends Armor{
     
 }

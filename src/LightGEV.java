@@ -7,6 +7,6 @@
  *
  * @author ldittm0798
  */
-public class LightGEV {
+public class LightGEV extends GEV{
     
 }

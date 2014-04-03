@@ -7,18 +7,25 @@
  *
  * @author ldittm0798
  */
-public abstract class Armor extends Unit {
+public class Infantry extends Unit{
     
+    int strength;
     int attack;
     int range;
     int defense;
     
-    public void disable(){
+    void reduce(){
         
     }
     
-    public void attack(Location loc){
+    void split(int n){
         
+    }
+    
+    @Override public void die(){
+        if(strength==0){
+            status = Status.DEAD;
+        }
     }
     
 }
