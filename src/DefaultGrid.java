@@ -15,6 +15,7 @@ public class DefaultGrid<Unit> implements Grid
 	public static final int ROWS = 21;
 	public static final int COLS = 15;
 	
+	
 	@Override
 	public Object get(Location loc)
 	{
@@ -54,13 +55,13 @@ public class DefaultGrid<Unit> implements Grid
 	@Override
 	public int getNumCols()
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		return COLS;
 	}
 
 	@Override
 	public int getNumRows()
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		return ROWS;
 	}
 	
 }
