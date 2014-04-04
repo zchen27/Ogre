@@ -19,7 +19,6 @@ public class DefaultGrid<Unit> implements Grid
 	private Location[][] g;
 	private ArrayList<Unit> units;
 	
-	
 	@Override
 	public Object get(Location loc)
 	{
@@ -33,7 +32,6 @@ public class DefaultGrid<Unit> implements Grid
 		return E;
 		
 	}
-	
 
 	@Override
 	public ArrayList getEmptyAdjacentLocations(Location loc)
