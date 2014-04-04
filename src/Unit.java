@@ -27,7 +27,10 @@ public abstract class Unit {
     }
     
     public boolean checkLocation(Location loc){
-        //
+        if(loc.isCrater() || loc.){
+            return false;
+        }
+        return true;
     }
     
 }
