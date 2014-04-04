@@ -9,11 +9,15 @@ import java.util.ArrayList;
 /**
  *
  * @author zchen0704
+ * @param <Unit>
  */
 public class DefaultGrid<Unit> implements Grid
 {
 	public static final int ROWS = 21;
 	public static final int COLS = 15;
+	
+	private Location[][] g;
+	private ArrayList<Unit> units;
 	
 	
 	@Override
@@ -25,8 +29,11 @@ public class DefaultGrid<Unit> implements Grid
 	@Override
 	public Object put(Location loc, Object E)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		units.add((Unit) E);
+		return E;
+		
 	}
+	
 
 	@Override
 	public ArrayList getEmptyAdjacentLocations(Location loc)
@@ -47,7 +54,7 @@ public class DefaultGrid<Unit> implements Grid
 	}
 
 	@Override
-	public ArrayList getNeighbors()
+	public ArrayList getNeighbors(Location loc)
 	{
 		throw new UnsupportedOperationException("Not supported yet.");
 	}

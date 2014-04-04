@@ -9,6 +9,7 @@ import java.util.ArrayList;
 /**
  *
  * @author zchen0704
+ * @param <E>
  */
 public interface Grid<E>
 {
@@ -22,7 +23,7 @@ public interface Grid<E>
 	
 	public ArrayList<Location> getValidAdjacentLocations(Location loc);
 	
-	public ArrayList<E> getNeighbors();
+	public ArrayList<E> getNeighbors(Location loc);
 	
 	public int getNumCols();
 	
