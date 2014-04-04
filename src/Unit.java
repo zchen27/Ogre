@@ -14,6 +14,10 @@ public abstract class Unit {
     Location loc;
     Status status;
     
+    public Location getLocation(){
+        return loc;
+    }
+    
     public void die(){
         status = Status.DEAD;
     }
