@@ -17,6 +17,10 @@ public interface Grid<E>
 	
 	public E put(Location loc, Object E);
 	
+	public E remove(Location loc);
+	
+	public ArrayList<Location> getOccupiedLocations();
+	
 	public ArrayList<Location> getEmptyAdjacentLocations(Location loc);
 	
 	public ArrayList<Location> getOccupiedAdjacentLocations(Location loc);
@@ -28,5 +32,7 @@ public interface Grid<E>
 	public int getNumCols();
 	
 	public int getNumRows();
+	
+	public boolean isValid(Location loc);
 	
 }
