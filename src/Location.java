@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+
+
 
 /*
  * To change this template, choose Tools | Templates
@@ -85,6 +88,17 @@ public class Location implements Comparable
 				return null;
 		}
 	}
+        
+        public ArrayList<Location> getNeighbors(){
+            ArrayList<Location> neighbors = new ArrayList<Location>();
+            neighbors.add(getAdjacentLocation(Direction.N));
+            neighbors.add(getAdjacentLocation(Direction.NE));
+            neighbors.add(getAdjacentLocation(Direction.NW));
+            neighbors.add(getAdjacentLocation(Direction.S));
+            neighbors.add(getAdjacentLocation(Direction.SE));
+            neighbors.add(getAdjacentLocation(Direction.SW));
+            return neighbors;
+        }
 	
 	public void setCrater(boolean b)
 	{
