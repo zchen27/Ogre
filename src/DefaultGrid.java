@@ -12,7 +12,7 @@ import java.util.Map;
  * @author zchen0704
  * @param <Unit>
  */
-public class DefaultGrid<Unit> implements Grid
+public class DefaultGrid<E> implements Grid
 {
 
 	private Object[][] occupants;
@@ -37,19 +37,36 @@ public class DefaultGrid<Unit> implements Grid
 			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
 		}
 		
-		return (Unit) occupants[loc.getRow()][loc.getCol()];
+		return (E) occupants[loc.getRow()][loc.getCol()];
 	}
 
 	@Override
 	public Object put(Location loc, Object E)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		if(!isValid(loc))
+		{
+			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
+		}
+		
+		int r = loc.getRow();
+		int c = loc.getCol();
+		occupants[r][c] = E;
+		return E;
 	}
 	
 	@Override
 	public Object remove(Location loc)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		if(!isValid(loc))
+		{
+			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
+		}
+		
+		int r = loc.getRow();
+		int c = loc.getCol();
+		Object temp = occupants[r][c];
+		occupants[r][c] = null;
+		return temp;
 	}
 
 	@Override
@@ -79,7 +96,7 @@ public class DefaultGrid<Unit> implements Grid
 	@Override
 	public ArrayList getNeighbors(Location loc)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		return loc.getNeighbors();
 	}
 
 	@Override
@@ -99,7 +116,6 @@ public class DefaultGrid<Unit> implements Grid
 	{
 		boolean c = loc.getCol() > 0 && loc.getCol() < getNumCols();
 		boolean r = loc.getRow() > 0 && loc.getRow() < getNumRows();
-		
 		return c && r;
 	}
 	
