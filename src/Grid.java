@@ -19,7 +19,7 @@ public interface Grid<E>
 	
 	public E remove(Location loc);
 	
-	public ArrayList<Location> getOccupiedLocations();
+	public ArrayList<Location> getOccupiedLocations(Location loc);
 	
 	public ArrayList<Location> getEmptyAdjacentLocations(Location loc);
 	

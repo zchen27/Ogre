@@ -72,25 +72,80 @@ public class DefaultGrid<E> implements Grid
 	@Override
 	public ArrayList getEmptyAdjacentLocations(Location loc)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		ArrayList<Location> neighbors = getNeighbors(loc);
+		for(Location l: neighbors)
+		{
+			if(!isValid(l))
+			{
+				throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
+			}
+			
+			int r = l.getRow();
+			int c = l.getCol();
+			
+			if(occupants[r][c] != null)
+			{
+				neighbors.remove(l);
+			}
+		}
+		
+		return neighbors;
 	}
 
 	@Override
-	public ArrayList getOccupiedLocations()
+	public ArrayList getOccupiedLocations(Location loc)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		ArrayList<Location> locations = new ArrayList();
+		for(int i = 0; i < occupants.length; i++)
+		{
+			for(int j = 0; j < occupants[0].length; j++)
+			{
+				if(occupants[i][j] != null)
+				{
+					locations.add(new Location(i, j));
+				}
+			}
+		}
+		
+		return locations;
 	}
 
 	@Override
 	public ArrayList getOccupiedAdjacentLocations(Location loc)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		ArrayList<Location> neighbors = getNeighbors(loc);
+		for(Location l: neighbors)
+		{
+			if(!isValid(l))
+			{
+				throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
+			}
+			
+			int r = l.getRow();
+			int c = l.getCol();
+			
+			if(occupants[r][c] == null)
+			{
+				neighbors.remove(l);
+			}
+		}
+		
+		return neighbors;
 	}
 
 	@Override
 	public ArrayList getValidAdjacentLocations(Location loc)
 	{
-		throw new UnsupportedOperationException("Not supported yet.");
+		ArrayList<Location> neighbors = getEmptyAdjacentLocations(loc);
+		for(Location l: neighbors)
+		{
+			if(l.isCrater())
+			{
+				neighbors.remove(l);
+			}
+		}
+		
+		return neighbors;
 	}
 
 	@Override
