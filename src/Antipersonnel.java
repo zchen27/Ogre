@@ -11,7 +11,7 @@ public class Antipersonnel extends Weapon
 {
 	public Antipersonnel()
 	{
-		super.attack = 1;
+		super.attack = 1; 
 		super.range = 1;
 		super.defense = 1;
 	}
