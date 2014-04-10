@@ -16,8 +16,10 @@ public abstract class Unit {
     
     int cost;
     int movement;
+	int remainingMoves;
     Location loc;
     Status status;
+	private ArrayList<Location> fringes = new ArrayList<Location>();
     
     public Location getLocation(){
         return loc;
@@ -44,25 +46,41 @@ public abstract class Unit {
     }
     
     public ArrayList<Location> availableMoves(Game game){
-        //Check locations extending out from "loc" a number of "movement" steps
-        //Remove duplicates (java.util.set)
-        //NEED getNeighbors METHOD!!!
-        ArrayList<Location> fringes = new ArrayList<Location>();
+		
         fringes.add(loc);
-        //...http://www.redblobgames.com/grids/hexagons/
-        for(int k=1; k<=movement; k++){
-            ArrayList<Location> lastSet = new ArrayList<Location>();
-            lastSet = loc.getNeighbors();
-            for(int j=0; j<lastSet.size(); j++){
-                boolean check1 = checkLocation(lastSet.get(j), game);
-                if(!check1){
-                    lastSet.remove(j);
-                    j--;
-                }
-            }
-        }
+		remainingMoves=movement;
+		
+        surroundingSpots(loc, game);
+		
         Set<Location> fringeSet = new HashSet<Location>(fringes);
         fringes = new ArrayList<Location>(fringeSet);
+		return fringes;
     }
+	
+	private void surroundingSpots(Location loc, Game game){
+		ArrayList<Location> surroundingSet = loc.getNeighbors();
+		for(int j=0; j<surroundingSet.size(); j++){
+			boolean check = checkLocation(surroundingSet.get(j), game);
+			if(!check){
+				surroundingSet.remove(j);
+				j--;
+			} else {
+				for(int f=0; f<fringes.size(); f++){
+					if(surroundingSet.get(j).equals(fringes.get(f))){
+						surroundingSet.remove(j);
+						j--;
+					}
+				}
+			}
+		}
+		fringes.addAll(surroundingSet);
+		remainingMoves--;
+		for(int l=0; l<surroundingSet.size() && remainingMoves>0; l++){
+			surroundingSpots(surroundingSet.get(l), game);
+		}
+		
+		//will loop forever: a neighbor of a location will have the location as its neighbor
+		
+	}
     
 }
