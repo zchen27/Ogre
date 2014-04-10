@@ -74,12 +74,13 @@ public abstract class Unit {
 			}
 		}
 		fringes.addAll(surroundingSet);
-		remainingMoves--;
-		for(int l=0; l<surroundingSet.size() && remainingMoves>0; l++){
+		//remainingMoves--;
+		for(int l=0; l<surroundingSet.size() && remainingMoves>1; l++){
 			surroundingSpots(surroundingSet.get(l), game);
+			remainingMoves--;
 		}
 		
-		//will loop forever: a neighbor of a location will have the location as its neighbor
+		//remaingMoves is decreased at EVERY iteration, not just when the distance increases?? --> Fixed?
 		
 	}
     
