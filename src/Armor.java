@@ -9,9 +9,10 @@
  */
 public abstract class Armor extends Unit {
     
-    int attack;
-    int range;
-    int defense;
+    protected int attack;
+    protected int range;
+    protected int defense;
+	protected int move;
     
     public void disable(){
         
@@ -20,5 +21,24 @@ public abstract class Armor extends Unit {
     public void attack(Location loc){
         
     }
-    
+	
+	public int getAttack()
+	{
+		return attack;
+	}
+	
+	public int getRange()
+	{
+		return range;
+	}
+	
+	public int getDefense()
+	{
+		return defense;
+	}
+	
+	public int getMove()
+	{
+		return move;
+	}
 }
