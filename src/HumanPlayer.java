@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -10,17 +13,20 @@
 public class HumanPlayer implements Player
 {
 	int points;
-	
+	ArrayList<Unit> units;
 	
 	@Override
 	public void buyUnit(Unit u)
 	{
+		points -= u.cost;
+		units.add(u);
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
 	@Override
 	public void moveUnit(Unit u, Location loc)
 	{
+		u.move(loc);
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
