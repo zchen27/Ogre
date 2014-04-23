@@ -33,6 +33,10 @@ public class HumanPlayer implements Player
 	@Override
 	public void attack(Unit u, Location loc)
 	{
+		if((u instanceof Armor))
+		{
+			((Armor) u).attack(loc);
+		}
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
