@@ -35,6 +35,7 @@ public class OgreWindow implements ActionListener, MouseListener
 		int x = me.getX();
 		int y = me.getY();
 		
+		
 	}
 
 	@Override
