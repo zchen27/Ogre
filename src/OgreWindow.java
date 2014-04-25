@@ -21,7 +21,7 @@ public class OgreWindow implements ActionListener, MouseListener
 {
 	private JFrame frame;
 	private JPanel boardPanel;
-	private DefaultGrid grid;
+	private Game game;
 
 	@Override
 	public void actionPerformed(ActionEvent ae)
@@ -35,6 +35,7 @@ public class OgreWindow implements ActionListener, MouseListener
 		int x = me.getX();
 		int y = me.getY();
 		
+		Grid grid = game.getGrid();
 		
 	}
 
