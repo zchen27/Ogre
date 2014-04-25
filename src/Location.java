@@ -16,12 +16,6 @@ public class Location implements Comparable
 {
 	private int col;
 	private int row;
-	private boolean N;
-	private boolean NE;
-	private boolean NW;
-	private boolean S;
-	private boolean SE;
-	private boolean SW;
 	private boolean isCrater = false;
 	
 	public enum Direction
@@ -33,6 +27,17 @@ public class Location implements Comparable
 	{
 		col = c;
 		row = r;
+	}
+	
+	public Location(String s)
+	{
+		if(s.length() != 4 && !s.matches("[0-9]+"))
+		{
+			throw new IllegalArgumentException("INVALID STRING");
+		}
+		
+		col = Integer.parseInt(s.substring(0, 2));
+		row = Integer.parseInt(s.substring(2, 4));
 	}
 	
 	@Override
