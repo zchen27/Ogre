@@ -14,6 +14,7 @@ public class Game(humanPlayer human, computerPlayer computer) {
     
     int difficulty;
     protected ArrayList<Unit> units;
+	private DefaultGrid grid;
     
     public boolean scanLocations(Location loc){
         for(int i=0; i<units.size(); i++){
@@ -29,9 +30,13 @@ public class Game(humanPlayer human, computerPlayer computer) {
         
     }
     
-    public void drawBoard(){
-    
-    }
+    public Grid getGrid(){
+		return grid;
+	}
+	
+	public void setGrid(Grid newGrid){
+		grid = (DefaultGrid)newGrid;
+	}
     
     public void changeSides(){
         
