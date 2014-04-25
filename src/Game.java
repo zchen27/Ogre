@@ -38,7 +38,100 @@ public class Game(humanPlayer human, computerPlayer computer) {
     }
     
     public Result roll(int attack, int defense){
-        
+        int rollNumber = 1 + (int)(Math.random()*((6-1)+1));
+		double combatRatio = (attack/defense);
+		//double chartRatio;
+		
+		//Always in favor of defense
+		
+		if(combatRatio>5){
+			return Result.X;
+		} else if(combatRatio>4){
+			if(rollNumber==1){
+				return Result.D;
+			} else if(rollNumber==2){
+				return Result.X;
+			} else if(rollNumber==3){
+				return Result.X;
+			} else if(rollNumber==4){
+				return Result.X;
+			} else if(rollNumber==5){
+				return Result.X;
+			} else {
+				return Result.X;
+			}
+		} else if(combatRatio>3){
+			if(rollNumber==1){
+				return Result.D;
+			} else if(rollNumber==2){
+				return Result.D;
+			} else if(rollNumber==3){
+				return Result.X;
+			} else if(rollNumber==4){
+				return Result.X;
+			} else if(rollNumber==5){
+				return Result.X;
+			} else {
+				return Result.X;
+			}
+		} else if(combatRatio>2){
+			if(rollNumber==1){
+				return Result.NE;
+			} else if(rollNumber==2){
+				return Result.D;
+			} else if(rollNumber==3){
+				return Result.D;
+			} else if(rollNumber==4){
+				return Result.X;
+			} else if(rollNumber==5){
+				return Result.X;
+			} else {
+				return Result.X;
+			}
+		} else if(combatRatio>1){
+			if(rollNumber==1){
+				return Result.NE;
+			} else if(rollNumber==2){
+				return Result.NE;
+			} else if(rollNumber==3){
+				return Result.D;
+			} else if(rollNumber==4){
+				return Result.D;
+			} else if(rollNumber==5){
+				return Result.X;
+			} else {
+				return Result.X;
+			}
+		} else if(combatRatio>0.5){
+			if(rollNumber==1){
+				return Result.NE;
+			} else if(rollNumber==2){
+				return Result.NE;
+			} else if(rollNumber==3){
+				return Result.NE;
+			} else if(rollNumber==4){
+				return Result.NE;
+			} else if(rollNumber==5){
+				return Result.D;
+			} else {
+				return Result.X;
+			}
+		} else {
+			if(rollNumber==1){
+				return Result.NE;
+			} else if(rollNumber==2){
+				return Result.NE;
+			} else if(rollNumber==3){
+				return Result.NE;
+			} else if(rollNumber==4){
+				return Result.NE;
+			} else if(rollNumber==5){
+				return Result.NE;
+			} else {
+				return Result.NE;
+			}
+		}
+		
     }
     
     public void addUnit(Unit unit, Player player){
