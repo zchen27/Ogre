@@ -117,19 +117,7 @@ public class Game(humanPlayer human, computerPlayer computer) {
 				return Result.X;
 			}
 		} else {
-			if(rollNumber==1){
-				return Result.NE;
-			} else if(rollNumber==2){
-				return Result.NE;
-			} else if(rollNumber==3){
-				return Result.NE;
-			} else if(rollNumber==4){
-				return Result.NE;
-			} else if(rollNumber==5){
-				return Result.NE;
-			} else {
-				return Result.NE;
-			}
+			return Result.NE;
 		}
 		
     }
