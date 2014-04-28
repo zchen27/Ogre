@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -19,7 +22,9 @@ public abstract class Armor extends Unit {
     }
     
     public void attack(Location loc){
-        
+        //Make attackLocations a private list
+		//Check if loc is in the list
+		//If not, relinquish the opportunity to attack (pass)
     }
 	
 	public int getAttack()
@@ -41,4 +46,12 @@ public abstract class Armor extends Unit {
 	{
 		return move;
 	}
+	
+	public ArrayList<Location> availableAttacks(Game game){
+		
+		ArrayList<Location> attackLocations = new ArrayList<Location>();
+		//Iterate through location rings within range
+		
+	}
+	
 }

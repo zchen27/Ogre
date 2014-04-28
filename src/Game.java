@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author ldittm0798
  */
-public class Game(humanPlayer human, computerPlayer computer) {
+public class Game(HumanPlayer human) {
     
     int difficulty;
     protected ArrayList<Unit> units;
@@ -39,7 +39,7 @@ public class Game(humanPlayer human, computerPlayer computer) {
 	}
     
     public void changeSides(){
-        
+        //TBD
     }
     
     public Result roll(int attack, int defense){

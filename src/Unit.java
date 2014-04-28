@@ -17,7 +17,7 @@ public abstract class Unit {
     int cost;
     int movement;
 	int remainingMoves;
-    Location loc;
+    private Location loc;
     Status status;
 	private ArrayList<Location> fringes = new ArrayList<Location>();
     
@@ -29,13 +29,13 @@ public abstract class Unit {
         status = Status.DEAD;
     }
     
-    public void placeSelfOnGrid(Location loc){
-        //
+    public void placeSelfOnGrid(Location newLoc){
+        loc = newLoc;
     }
     
    public void move(Location loc){
         //
-    }
+   }
     
     public boolean checkLocation(Location loc, Game game){
         if(loc.isCrater() || game.scanLocations(loc)){
@@ -46,6 +46,10 @@ public abstract class Unit {
     }
     
     public ArrayList<Location> availableMoves(Game game){
+		
+		//Necessary?
+		fringes = new ArrayList<Location>();
+		//
 		
         fringes.add(loc);
 		remainingMoves=movement;
