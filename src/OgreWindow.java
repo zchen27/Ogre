@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.event.ActionEvent;
@@ -6,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,17 +23,17 @@ import javax.swing.JPopupMenu;
  *
  * @author zchen0704
  */
-public class OgreWindow implements ActionListener, MouseListener
+public class OgreWindow implements ActionListener, MouseListener, MouseMotionListener
 {
 	private JFrame frame;
-	private JPanel boardPanel;
+	private OgrePanel panel;
 	private JPopupMenu popup;
 	private Game game;
 	private double radius;
 	private double width;
 	private double side;
 	private double height;
-	private Location[] sel = new Location[2];
+	private Location mouseover;
 	
 	private class OgrePanel extends JPanel
 	{
@@ -52,6 +54,11 @@ public class OgreWindow implements ActionListener, MouseListener
 					int dx = c * (int) width;
 					int dy = r * (int) height;
 					
+					if(new Location(c, r).equals(mouseover))
+					{
+						g.setColor(Color.blue);
+					}
+					
 					if(c % 2 != 0)
 					{
 						dy += height / 2;
@@ -59,8 +66,8 @@ public class OgreWindow implements ActionListener, MouseListener
 					
 					for(int i = 0; i < 6; i++)
 					{
-						xpoints[i] = (int) ((int) 25 * Math.cos(i * 2 * Math.PI / 6) + dx);
-						ypoints[i] = (int) ((int) 25 * Math.sin(i * 2 * Math.PI / 6) + dy);
+						xpoints[i] = (int) ((int) 10 * Math.cos(i * 2 * Math.PI / 6) + dx);
+						ypoints[i] = (int) ((int) 10 * Math.sin(i * 2 * Math.PI / 6) + dy);
 					}
 					
 					Polygon hex = new Polygon (xpoints, ypoints, 6);
@@ -76,7 +83,13 @@ public class OgreWindow implements ActionListener, MouseListener
 		game = g;
 		radius = r;
 		side = radius * 3/2;
+		width = radius * 2;
 		height = Math.sqrt(3) * radius;
+		frame = new JFrame();
+		panel = new OgrePanel();
+		frame.add(panel);
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	@Override
@@ -91,16 +104,24 @@ public class OgreWindow implements ActionListener, MouseListener
 		double x = me.getX();
 		double y = me.getY();
 		int button = me.getButton();
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent me)
+	{
 		
-		
-		
-		Location loc = convert(x, y);
-		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent me)
+	{
+		mouseover = convert(me.getPoint().x, me.getPoint().y);
+		panel.invalidate();
+		panel.repaint();
 	}
 	
 	private Location convert(double x, double y)
-	{
-				
+	{		
 		double xt;
 		double yt;
 		
@@ -144,7 +165,6 @@ public class OgreWindow implements ActionListener, MouseListener
 			c = ct - 1;
 			r = rt - c%2 + dr;
 		}
-		
 		return new Location((int) c, (int) r);
 	}
 
@@ -172,5 +192,22 @@ public class OgreWindow implements ActionListener, MouseListener
 		
 	}
 	
+	private static void runOgreWindow()
+	{
+		
+	}
 	
+		public static void main(String[] args)
+	{
+		Runnable run = new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				runOgreWindow();
+			}
+		};
+		
+		javax.swing.SwingUtilities.invokeLater(run);
+	}
 }
