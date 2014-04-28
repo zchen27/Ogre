@@ -12,16 +12,16 @@ import java.util.Map;
  * @author zchen0704
  * @param <Unit>
  */
-public class DefaultGrid<E> implements Grid
+public class DefaultGrid implements Grid
 {
 
-	private Object[][] occupants;
+	private Unit[][] occupants;
 	
 	public DefaultGrid(int r, int c)
 	{
 		if(r > 0 && c > 0)
 		{
-			occupants = new Object[r][c];
+			occupants = new Unit[r][c];
 		}
 		else
 		{
@@ -29,33 +29,24 @@ public class DefaultGrid<E> implements Grid
 		}
 	}
 	
-	@Override
-	public Object get(Location loc)
+	public DefaultGrid()
 	{
-		if(!isValid(loc))
-		{
-			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
-		}
-		
-		return (E) occupants[loc.getRow()][loc.getCol()];
-	}
-
-	@Override
-	public Object put(Location loc, Object E)
-	{
-		if(!isValid(loc))
-		{
-			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
-		}
-		
-		int r = loc.getRow();
-		int c = loc.getCol();
-		occupants[r][c] = E;
-		return E;
+		occupants = new Unit[15][21];
 	}
 	
 	@Override
-	public Object remove(Location loc)
+	public Unit get(Location loc)
+	{
+		if(!isValid(loc))
+		{
+			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
+		}
+		
+		return occupants[loc.getRow()][loc.getCol()];
+	}
+
+	@Override
+	public Unit put(Location loc, Unit U)
 	{
 		if(!isValid(loc))
 		{
@@ -64,7 +55,21 @@ public class DefaultGrid<E> implements Grid
 		
 		int r = loc.getRow();
 		int c = loc.getCol();
-		Object temp = occupants[r][c];
+		occupants[r][c] = U;
+		return U;
+	}
+	
+	@Override
+	public Unit remove(Location loc)
+	{
+		if(!isValid(loc))
+		{
+			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
+		}
+		
+		int r = loc.getRow();
+		int c = loc.getCol();
+		Unit temp = occupants[r][c];
 		occupants[r][c] = null;
 		return temp;
 	}

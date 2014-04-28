@@ -9,15 +9,15 @@ import java.util.ArrayList;
 /**
  *
  * @author zchen0704
- * @param <E>
+ * @param <Unitt>
  */
-public interface Grid<E>
+public interface Grid
 {
-	public E get(Location loc);
+	public Unit get(Location loc);
 	
-	public E put(Location loc, Object E);
+	public Unit put(Location loc, Unit Unitt);
 	
-	public E remove(Location loc);
+	public Unit remove(Location loc);
 	
 	public ArrayList<Location> getOccupiedLocations(Location loc);
 	
@@ -27,7 +27,7 @@ public interface Grid<E>
 	
 	public ArrayList<Location> getValidAdjacentLocations(Location loc);
 	
-	public ArrayList<E> getNeighbors(Location loc);
+	public ArrayList<Unit> getNeighbors(Location loc);
 	
 	public int getNumCols();
 	
