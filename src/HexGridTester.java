@@ -117,9 +117,9 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		grid.put(new Location("1002"), new HeavyTank());
 		try 
 		{                
-			tank = ImageIO.read(new File(getClass().getResource("/tank-heavy.png").toURI()));
+			tank = ImageIO.read(new File("src/tank-heavy.png"));
 		}
-		catch (IOException | URISyntaxException ex)
+		catch (IOException ex)
 		{
 			ex.printStackTrace();
 		}
