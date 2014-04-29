@@ -1,7 +1,9 @@
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
+
 
 /*
  * To change this template, choose Tools | Templates
@@ -18,8 +20,10 @@ public abstract class Unit {
     int movement;
 	int remainingMoves;
     private Location loc;
+    private Grid grid;
     Status status;
 	private ArrayList<Location> fringes = new ArrayList<Location>();
+	private HashSet<Location> moves = new HashSet<Location>();
     
     public Location getLocation(){
         return loc;
@@ -29,42 +33,51 @@ public abstract class Unit {
         status = Status.DEAD;
     }
     
-    public void placeSelfOnGrid(Location newLoc){
+    public void placeSelfOnGrid(Location newLoc, Grid grid){
         loc = newLoc;
+        this.grid = grid;
     }
     
    public void move(Location loc){
-        //
+       
    }
+   
     
-    public boolean checkLocation(Location loc, Game game){
-        if(loc.isCrater() || game.scanLocations(loc)){
+    public boolean checkLocation(Location loc, Grid grid){
+        try{
+    	if(loc.isCrater() || grid.get(loc) != null){
             return false;
+        }
+        }
+        catch (IllegalArgumentException ex)
+        {
+        	return false;
         }
         return true;
         //returns true if location is empty
     }
     
-    public ArrayList<Location> availableMoves(Game game){
+    public ArrayList<Location> availableMoves(Grid grid){
 		
 		//Necessary?
 		fringes = new ArrayList<Location>();
 		//
 		
         fringes.add(loc);
-		remainingMoves=movement;
+		remainingMoves=movement + 1;
 		
-        surroundingSpots(loc, game);
+        surroundingSpots(loc, grid);
 		
         Set<Location> fringeSet = new HashSet<Location>(fringes);
         fringes = new ArrayList<Location>(fringeSet);
 		return fringes;
     }
 	
-	private void surroundingSpots(Location loc, Game game){
+	private void surroundingSpots(Location loc, Grid grid){
 		ArrayList<Location> surroundingSet = loc.getNeighbors();
 		for(int j=0; j<surroundingSet.size(); j++){
-			boolean check = checkLocation(surroundingSet.get(j), game);
+			boolean check = checkLocation(surroundingSet.get(j), grid);
+			System.out.println(surroundingSet.get(j) + " " + check);
 			if(!check){
 				surroundingSet.remove(j);
 				j--;
@@ -80,7 +93,7 @@ public abstract class Unit {
 		fringes.addAll(surroundingSet);
 		//remainingMoves--;
 		for(int l=0; l<surroundingSet.size() && remainingMoves>1; l++){
-			surroundingSpots(surroundingSet.get(l), game);
+			surroundingSpots(surroundingSet.get(l), grid);
 			remainingMoves--;
 		}
 		

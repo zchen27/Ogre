@@ -17,21 +17,21 @@ public class DefaultGrid implements Grid
 
 	private Unit[][] occupants;
 	
-	public DefaultGrid(int r, int c)
+	public DefaultGrid(int c, int r)
 	{
 		if(r > 0 && c > 0)
 		{
-			occupants = new Unit[r][c];
+			occupants = new Unit[c][r];
 		}
 		else
 		{
-			throw new IllegalArgumentException(r + " by " + c + " is not a valid size");
+			throw new IllegalArgumentException(c + " by " + r + " is not a valid size");
 		}
 	}
 	
 	public DefaultGrid()
 	{
-		occupants = new Unit[15][21];
+		occupants = new Unit[21][15];
 	}
 	
 	@Override
@@ -41,8 +41,7 @@ public class DefaultGrid implements Grid
 		{
 			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
 		}
-		
-		return occupants[loc.getRow()][loc.getCol()];
+		return occupants[loc.getCol()][loc.getRow()];
 	}
 
 	@Override
@@ -55,7 +54,8 @@ public class DefaultGrid implements Grid
 		
 		int r = loc.getRow();
 		int c = loc.getCol();
-		occupants[r][c] = U;
+		U.placeSelfOnGrid(new Location(c, r), this);
+		occupants[c][r] = U;
 		return U;
 	}
 	
@@ -67,10 +67,10 @@ public class DefaultGrid implements Grid
 			throw new IllegalArgumentException("Location " + loc.toString() + " not Valid!");
 		}
 		
-		int r = loc.getRow();
-		int c = loc.getCol();
-		Unit temp = occupants[r][c];
-		occupants[r][c] = null;
+		int c = loc.getRow();
+		int r = loc.getCol();
+		Unit temp = occupants[c][r];
+		occupants[c][r] = null;
 		return temp;
 	}
 
@@ -129,7 +129,7 @@ public class DefaultGrid implements Grid
 			int r = l.getRow();
 			int c = l.getCol();
 			
-			if(occupants[r][c] == null)
+			if(occupants[c][r] == null)
 			{
 				neighbors.remove(l);
 			}
@@ -174,8 +174,8 @@ public class DefaultGrid implements Grid
 	@Override
 	public boolean isValid(Location loc)
 	{
-		boolean c = loc.getCol() > 0 && loc.getCol() < getNumCols();
-		boolean r = loc.getRow() > 0 && loc.getRow() < getNumRows();
+		boolean c = loc.getCol() >= 0 && loc.getCol() < getNumCols();
+		boolean r = loc.getRow() >= 0 && loc.getRow() < getNumRows();
 		return c && r;
 	}
 	

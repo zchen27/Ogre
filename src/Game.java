@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author ldittm0798
  */
-public class Game(HumanPlayer human) {
+public class Game {
     
     int difficulty;
     protected ArrayList<Unit> units;
@@ -127,7 +127,8 @@ public class Game(HumanPlayer human) {
 		
     }
     
-    public void addUnit(Unit unit, Player player){
+    public void addUnit(Unit unit, Player player)
+    {
         
     }
     

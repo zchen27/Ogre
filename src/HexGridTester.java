@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Point;
@@ -9,7 +10,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
@@ -27,27 +36,30 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 	
 	private JFrame frame;
 	private TestPanel panel;
+	private JPopupMenu popup;
+	private JMenuItem item;
 	private double radius;
 	private double width;
 	private double side;
 	private double height;
 	private Point currentPoint;
 	private Location mouseover;
-	private Game game;
+	private ArrayList<Location> highlights;
+	private DefaultGrid grid = new DefaultGrid();
+	private BufferedImage tank;
 	
 	private class TestPanel extends JPanel
 	{
 		@Override
 		public void paintComponent(Graphics g)
 		{
-			System.out.println("CALLED");
 			super.paintComponent(g);
 			int[] xpoints = new int[6];
 			int[] ypoints = new int[6];
 			
-			for(int c = 0; c < game.getGrid().getNumCols(); c++)
+			for(int c = 0; c < grid.getNumCols(); c++)
 			{
-				for(int r = 0; r < game.getGrid().getNumRows(); r++)
+				for(int r = 0; r < grid.getNumRows(); r++)
 				{
 					double dx = ( c * (.75 * width)) + width;
 					double dy = r * height + height;
@@ -64,11 +76,17 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 					}
 					
 					Polygon hex = new Polygon (xpoints, ypoints, 6);
+					
 					if (hex.contains(currentPoint))
 					{
 						g.setColor(Color.cyan);
 						g.fillPolygon(hex);
-
+						mouseover = new Location(c, r);
+					}
+					else if (highlights != null && highlights.contains(new Location(c, r)))
+					{
+						g.setColor(Color.green);
+						g.fillPolygon(hex);
 					}
 					else
 					{
@@ -77,11 +95,14 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 					}
 					
 					g.setColor(Color.black);
-					g.drawString(new Location(r, c).toString(), (int) (dx - (side / 2)), (int) dy);
+					g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 9));
+					g.drawString(new Location(c, r).toString(), (int) (dx - (side / 3)), (int) (dy + height  / 3));
 					
-					mouseover = new Location(c, r);
 					
-					
+					if(grid.get(new Location(c, r)) != null)
+					{
+						g.drawImage(tank, (int) (dx - radius), (int) (dy - height / 2), null);
+					}
 				}
 			}
 		}
@@ -93,6 +114,16 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		side = radius * 3/2;
 		width = radius * 2;
 		height = Math.sqrt(3) * radius;
+		grid.put(new Location("1002"), new HeavyTank());
+		try 
+		{                
+			tank = ImageIO.read(new File(getClass().getResource("/tank-heavy.png").toURI()));
+		}
+		catch (IOException | URISyntaxException ex)
+		{
+			ex.printStackTrace();
+		}
+		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new GridLayout(0, 1));
@@ -117,7 +148,18 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 	@Override
 	public void mouseClicked(MouseEvent me)
 	{
+		currentPoint = me.getPoint();
+		panel.repaint();
+		if(grid.get(mouseover) != null)
+		{
+			highlights = grid.get(mouseover).availableMoves(grid);
+		}
 		
+		if(!highlights.contains(mouseover))
+		{
+			highlights = new ArrayList<Location>();
+		}
+		panel.repaint();
 	}
 
 	@Override
@@ -158,58 +200,9 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		panel.repaint();
 	}
 	
-	/*private Location convert(double x, double y)
-	{		
-		double xt;
-		double yt;
-		
-		double r;
-		double c;
-		
-		double rt;
-		double ct;
-		
-		double dr;
-		
-		ct = x / width;
-		
-		if(ct % 2 == 0)
-		{
-			rt = y / height;
-		}
-		else
-		{
-			rt =  (y - (height) / 2) / (height);
-		}
-		
-		xt = x - ct * width;
-		yt = y - rt * height;
-		
-		if(yt > (height / 2))
-		{
-			dr = 1;
-		}
-		else
-		{
-			dr = 0;
-		}
-		
-		if(xt > (radius * Math.abs(.5 - yt/height)))
-		{
-			c = ct;
-			r = rt;
-		}
-		else
-		{
-			c = ct - 1;
-			r = rt - c%2 + dr;
-		}
-		return new Location((int) c, (int) r);
-	}*/
-	
 	private static void runTestWindow()
 	{
-		HexGridTester tester = new HexGridTester(25);
+		HexGridTester tester = new HexGridTester(30);
 	}
 	
 		public static void main(String[] args)

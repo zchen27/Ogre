@@ -66,7 +66,22 @@ public class Location implements Comparable
 	@Override
 	public String toString()
 	{	
-		return col + "-" + row;
+		String s = "";
+		if(col < 10)
+		{
+			s = s + "0";
+		}
+		
+		s = s + col;
+		
+		if(row < 10)
+		{
+			s = s + "0";
+		}
+		
+		s = s + row;
+		
+		return s;
 	}
 	
 	public int getCol()
@@ -88,7 +103,7 @@ public class Location implements Comparable
 			case NE:
 				return new Location(col + 1, row -1);
 			case NW:
-				return new Location(col - 1, row);
+				return new Location(col - 1, row - 1);
 			case S:
 				return new Location(col, row + 1);
 			case SE:
