@@ -63,6 +63,12 @@ public class Location implements Comparable
 		return false;
 	}
 	
+	@Override
+	public String toString()
+	{	
+		return col + "-" + row;
+	}
+	
 	public int getCol()
 	{
 		return col;
