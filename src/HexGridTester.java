@@ -44,9 +44,22 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 	private double height;
 	private Point currentPoint;
 	private Location mouseover;
+	private Unit selected;
 	private ArrayList<Location> highlights;
 	private DefaultGrid grid = new DefaultGrid();
 	private BufferedImage tank;
+	
+	
+	private class InfoPanel extends JPanel
+	{
+		JLable location;
+		@Override
+		public void paintComponent(Graphics g)
+		{
+			super.paintComponent(g);
+			
+		}
+	}
 	
 	private class TestPanel extends JPanel
 	{
@@ -82,6 +95,7 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 						g.setColor(Color.cyan);
 						g.fillPolygon(hex);
 						mouseover = new Location(c, r);
+						selected = grid.get(mouseover);
 					}
 					else if (highlights != null && highlights.contains(new Location(c, r)))
 					{
