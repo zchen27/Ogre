@@ -9,12 +9,31 @@
  */
 public class HeavyTank extends Armor
 {
+	private static final int ATTACK = 4;
+	private static final int DEFENSE = 3; 
+	private static final int RANGE = 2;
+	private static final int MOVEMENT = 3;
+	
 	public HeavyTank()
 	{
-		super.cost = 1;
-		super.attack = 4;
-		super.range = 2;
-		super.defense = 3;
 		
+	}
+
+	@Override
+	public int getAttack()
+	{
+		return ATTACK;
+	}
+
+	@Override
+	public int getRange()
+	{
+		return RANGE;
+	}
+
+	@Override
+	public int getDefense()
+	{
+		return DEFENSE;
 	}
 }

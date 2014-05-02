@@ -12,46 +12,30 @@ import java.util.ArrayList;
  */
 public abstract class Armor extends Unit {
     
-    protected int attack;
-    protected int range;
-    protected int defense;
-	protected int move;
     
-    public void disable(){
+    public void disable()
+	{
         
     }
     
-    public void attack(Location loc){
+    public void attack(Location loc, String module){
         //Make attackLocations a private list
 		//Check if loc is in the list
 		//If not, relinquish the opportunity to attack (pass)
     }
 	
-	public int getAttack()
-	{
-		return attack;
-	}
+	public abstract int getAttack();
 	
-	public int getRange()
-	{
-		return range;
-	}
+	public abstract int getRange();
 	
-	public int getDefense()
-	{
-		return defense;
-	}
+	public abstract int getDefense();
 	
-	public int getMove()
+	public ArrayList<Location> availableAttacks(Game game)
 	{
-		return move;
-	}
-	
-	public ArrayList<Location> availableAttacks(Game game){
 		
 		ArrayList<Location> attackLocations = new ArrayList<Location>();
-		//Iterate through location rings within range
-		
+		//Iterate through location rings within range	
+		return null;
 	}
 	
 }
