@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -52,7 +53,14 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 	
 	private class InfoPanel extends JPanel
 	{
-		JLable location;
+		JLabel image;
+		JLabel name;
+		JLabel location;
+		JLabel defense;
+		JLabel movement;
+		JLabel attack;
+		JLabel range;
+		
 		@Override
 		public void paintComponent(Graphics g)
 		{
@@ -111,7 +119,6 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 					g.setColor(Color.black);
 					g.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 9));
 					g.drawString(new Location(c, r).toString(), (int) (dx - (side / 3)), (int) (dy + height  / 3));
-					
 					
 					if(grid.get(new Location(c, r)) != null)
 					{
