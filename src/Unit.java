@@ -19,6 +19,7 @@ public abstract class Unit {
     private int cost;
     private int movement;
 	private int remainingMoves;
+	private boolean alive = true;
     private Location loc;
     private Grid grid;
     
@@ -30,7 +31,7 @@ public abstract class Unit {
     }
     
     public void die(){
-        status = Status.DEAD;
+        alive = false;
     }
     
     public void placeSelfOnGrid(Location newLoc, Grid grid){
@@ -110,6 +111,10 @@ public abstract class Unit {
 	
 	public abstract int getMovement();
 	
+	public boolean isAlive()
+	{
+		return alive;
+	}
 
     
 }
