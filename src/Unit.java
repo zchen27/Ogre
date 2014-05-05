@@ -64,7 +64,9 @@ public abstract class Unit {
 		//
 		
         fringes.add(loc);
-		remainingMoves=movement + 1;
+		//remainingMoves=movement + 1;
+		remainingMoves=4;
+		//
 		
         surroundingSpots(loc, grid);
 		
