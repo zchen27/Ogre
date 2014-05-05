@@ -66,7 +66,7 @@ public abstract class Unit {
 		
         fringes.add(loc);
 		//remainingMoves=movement + 1;
-		remainingMoves=4;
+		remainingMoves=1;
 		//
 		
         surroundingSpots(loc, grid);
@@ -93,12 +93,28 @@ public abstract class Unit {
 				}
 			}
 		}
+		
+		//
+		for(int m=0; m<surroundingSet.size(); m++){
+			System.out.println(surroundingSet.get(m));
+		}
+		//
+				
 		fringes.addAll(surroundingSet);
 		//remainingMoves--;
+		
+		//
+		for(int n=0; n<surroundingSet.size(); n++){
+			System.out.println(fringes.get(n));
+		}
+		//
+		
 		for(int l=0; l<surroundingSet.size() && remainingMoves>1; l++){
 			surroundingSpots(surroundingSet.get(l), grid);
 			remainingMoves--;
 		}
+		
+		//^^ add while for remaining moves >> doesnt work
 		
 		//remaingMoves is decreased at EVERY iteration, not just when the distance increases?? --> Fixed?
 		
