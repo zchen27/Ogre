@@ -17,17 +17,29 @@ public abstract class Armor extends Unit {
 	
     public void disable()
 	{
-        
-    }
+        if(status != Status.DISABLED)
+		{
+			status = Status.DISABLED;	
+		}
+		else
+		{
+			die();
+		}
+	}
+	
+	@Override
+	public void die()
+	{
+		super.die();
+		status = Status.DEAD;
+	}
     
     public void attack(Location loc, String module)
 	{
         //Make attackLocations a private list
 		//Check if loc is in the list
 		//If not, relinquish the opportunity to attack (pass)
-		
-		//FRIENDLY FIRE IS ON!
-		
+		//FRIENDLY FIRE IS ON! You may demolish your own disabled vehicles!
 		
     }
 	
