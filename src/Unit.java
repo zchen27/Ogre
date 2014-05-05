@@ -16,12 +16,12 @@ import java.util.Set;
  */
 public abstract class Unit {
     
-    int cost;
-    int movement;
-	int remainingMoves;
+    private int cost;
+    private int movement;
+	private int remainingMoves;
     private Location loc;
     private Grid grid;
-    Status status;
+    private Status status;
 	private ArrayList<Location> fringes = new ArrayList<Location>();
 	private HashSet<Location> moves = new HashSet<Location>();
     
@@ -99,6 +99,21 @@ public abstract class Unit {
 		
 		//remaingMoves is decreased at EVERY iteration, not just when the distance increases?? --> Fixed?
 		
+	}
+	
+	public int getCost()
+	{
+		return cost;
+	}
+	
+	public int getMovement()
+	{
+		return movement;
+	}
+	
+	public Status getStatus()
+	{
+		return status;
 	}
     
 }
