@@ -12,15 +12,14 @@ import java.util.ArrayList;
  */
 public class HumanPlayer implements Player
 {
-	int points;
-	ArrayList<Unit> units;
+	private int points;
+	private ArrayList<Unit> reserves;
 	
 	@Override
 	public void buyUnit(Unit u)
 	{
-		points -= u.cost;
-		units.add(u);
-		throw new UnsupportedOperationException("Not supported yet.");
+		points -= u.getCost();
+		reserves.add(u);
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class HumanPlayer implements Player
 	}
 
 	@Override
-	public void attack(Unit u, Location loc)
+	public void attack(Unit u, Location loc, String module)
 	{
 		if((u instanceof Armor))
 		{

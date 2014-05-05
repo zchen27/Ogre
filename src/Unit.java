@@ -21,7 +21,7 @@ public abstract class Unit {
 	private int remainingMoves;
     private Location loc;
     private Grid grid;
-    private Status status;
+    
 	private ArrayList<Location> fringes = new ArrayList<Location>();
 	private HashSet<Location> moves = new HashSet<Location>();
     
@@ -110,9 +110,6 @@ public abstract class Unit {
 	
 	public abstract int getMovement();
 	
-	public Status getStatus()
-	{
-		return status;
-	}
+
     
 }
