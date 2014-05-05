@@ -36,4 +36,10 @@ public class HeavyTank extends Armor
 	{
 		return DEFENSE;
 	}
+
+	@Override
+	public int getMovement()
+	{
+		return MOVEMENT;
+	}
 }

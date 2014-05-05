@@ -61,6 +61,16 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		JLabel attack;
 		JLabel range;
 		
+		public InfoPanel()
+		{
+			if(selected != null)
+			{
+				name = new JLabel(selected.getClass().getName());
+				location = new JLabel(selected.toString());
+				
+			}
+		}
+		
 		@Override
 		public void paintComponent(Graphics g)
 		{
@@ -173,7 +183,8 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		panel.repaint();
 		if(grid.get(mouseover) != null)
 		{
-			highlights = grid.get(mouseover).availableMoves(grid);
+			selected = grid.get(mouseover);
+			highlights = selected.availableMoves(grid);
 		}
 		
 		if(!highlights.contains(mouseover))

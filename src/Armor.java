@@ -22,6 +22,8 @@ public abstract class Armor extends Unit {
         //Make attackLocations a private list
 		//Check if loc is in the list
 		//If not, relinquish the opportunity to attack (pass)
+		
+		
     }
 	
 	public abstract int getAttack();
