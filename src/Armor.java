@@ -12,16 +12,21 @@ import java.util.ArrayList;
  */
 public abstract class Armor extends Unit {
     
-    
+	private ArrayList<Location> attackLocations;
+    private Status status;
+	
     public void disable()
 	{
         
     }
     
-    public void attack(Location loc, String module){
+    public void attack(Location loc, String module)
+	{
         //Make attackLocations a private list
 		//Check if loc is in the list
 		//If not, relinquish the opportunity to attack (pass)
+		
+		//FRIENDLY FIRE IS ON!
 		
 		
     }
@@ -31,6 +36,11 @@ public abstract class Armor extends Unit {
 	public abstract int getRange();
 	
 	public abstract int getDefense();
+	
+	public Status getStatus()
+	{
+		return status;
+	}
 	
 	public ArrayList<Location> availableAttacks(Game game)
 	{
