@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Game {
     
-    int difficulty;
+    private int difficulty;
     protected ArrayList<Unit> units;
 	private DefaultGrid grid;
     

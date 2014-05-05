@@ -106,10 +106,7 @@ public abstract class Unit {
 		return cost;
 	}
 	
-	public int getMovement()
-	{
-		return movement;
-	}
+	public abstract int getMovement();
 	
 	public Status getStatus()
 	{
