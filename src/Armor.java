@@ -57,8 +57,12 @@ public abstract class Armor extends Unit {
 	public ArrayList<Location> availableAttacks(Game game)
 	{
 		
-		ArrayList<Location> attackLocations = new ArrayList<Location>();
+		attackLocations = new ArrayList();
 		//Iterate through location rings within range	
+		for(int i = 0; i < getRange(); i++)
+		{
+			
+		}
 		return null;
 	}
 	
