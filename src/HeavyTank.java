@@ -42,4 +42,10 @@ public class HeavyTank extends Armor
 	{
 		return MOVEMENT;
 	}
+
+	@Override
+	public String getName()
+	{
+		return "Heavy Tank";
+	}
 }

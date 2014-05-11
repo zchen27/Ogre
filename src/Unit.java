@@ -43,6 +43,8 @@ public abstract class Unit {
        
    }
    
+   public abstract String getName();
+   
     
     public boolean checkLocation(Location loc, Grid grid){
         try{

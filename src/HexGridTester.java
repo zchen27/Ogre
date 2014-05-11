@@ -63,11 +63,22 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		
 		public InfoPanel()
 		{
-			if(selected != null)
+			location = new JLabel(mouseover.toString());
+			if(selected instanceof Armor)
 			{
-				name = new JLabel(selected.getClass().getName());
-				location = new JLabel(selected.toString());
-				
+				name = new JLabel(selected.getName());
+				defense = new JLabel("" + ((Armor) selected).getDefense());
+				movement = new JLabel("" + selected.getMovement());
+				attack = new JLabel("" + ((Armor) selected).getAttack());
+				range = new JLabel(""  + ((Armor) selected).getRange());
+			}
+			else
+			{
+				name = new JLabel("");
+				defense = new JLabel("");
+				movement = new JLabel("");
+				attack = new JLabel("");
+				range = new JLabel("");
 			}
 		}
 		
