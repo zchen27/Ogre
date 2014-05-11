@@ -80,6 +80,11 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 				attack = new JLabel("");
 				range = new JLabel("");
 			}
+			this.add(location);
+			this.add(name);
+			this.add(defense);
+			this.add(attack);
+			this.add(range);
 		}
 		
 		@Override
