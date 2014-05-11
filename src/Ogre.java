@@ -12,9 +12,8 @@ import java.util.ArrayList;
  */
 public abstract class Ogre extends Unit {
 
-	String className;
-	String unitName;
-	private int movement;
+	private String className;
+	private String unitName;
 
 	public abstract int getTracks();
 
@@ -27,6 +26,10 @@ public abstract class Ogre extends Unit {
 	public abstract int getInternalMissiles();
 	
 	public abstract int getExternalMissiles();
+	
+	public abstract String getClassName();
+	
+	public abstract String getUnitName();
 	
 	public abstract int setTracks(int n);
 	
