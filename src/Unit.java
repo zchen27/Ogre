@@ -120,6 +120,8 @@ public abstract class Unit {
 		
 		//remaingMoves is decreased at EVERY iteration, not just when the distance increases?? --> Fixed?
 		
+		//This is a comment for a test commit
+		
 	}
 	
 	public int getCost()
