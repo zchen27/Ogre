@@ -14,6 +14,7 @@ public abstract class Ogre extends Unit {
 
 	String className;
 	String unitName;
+	private int movement;
 
 	public abstract int getTracks();
 
@@ -25,6 +26,8 @@ public abstract class Ogre extends Unit {
 	
 	public abstract int getInternalMissiles();
 	
+	public abstract int getExternalMissiles();
+	
 	public abstract int setTracks(int n);
 	
 	public abstract int setMainBattery(int n);
@@ -34,6 +37,8 @@ public abstract class Ogre extends Unit {
 	public abstract int setMissileTube(int n);
 	
 	public abstract int setInternalMissiles(int n);
+	
+	public abstract int setExternalMissiles(int n);
 	
 	public void mainBatteryAttack(Location loc)
 	{
@@ -62,27 +67,28 @@ public abstract class Ogre extends Unit {
 	
 	public void killMainBattery()
 	{
-		
+		setMainBattery(getMainBattery() - 1);
 	}
 
 	public void killSecondaryBattery()
 	{
-		
+		setSecondaryBattery(getSecondaryBattery() - 1);
 	}
 
-	public void killTracks(int num)
+	public void killTracks(int n)
 	{
-		
+		setTracks(getTracks() - n);
 	}
 
 	public void killMissileTube()
 	{
-		
+		setMissileTube(getMissileTube() - 1);
+		setInternalMissiles(getInternalMissiles() - 1);
 	}
 
-	public void killExternalMissile()
+	public void killExternalMissiles()
 	{
-		
+		setExternalMissiles(getExternalMissiles() - 1);
 	}
 
 

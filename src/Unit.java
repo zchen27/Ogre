@@ -129,6 +129,11 @@ public abstract class Unit {
 	
 	public abstract int getMovement();
 	
+	public void setMovement(int m)
+	{
+		movement = m;
+	}
+	
 	public boolean isAlive()
 	{
 		return alive;
