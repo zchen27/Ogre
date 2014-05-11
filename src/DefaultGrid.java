@@ -12,7 +12,7 @@ import java.util.Map;
  * @author zchen0704
  * @param <Unit>
  */
-public class DefaultGrid implements Grid
+public class DefaultGrid
 {
 
 	private Unit[][] occupants;
@@ -34,7 +34,7 @@ public class DefaultGrid implements Grid
 		occupants = new Unit[21][15];
 	}
 	
-	@Override
+	
 	public Unit get(Location loc)
 	{
 		if(!isValid(loc))
@@ -44,7 +44,7 @@ public class DefaultGrid implements Grid
 		return occupants[loc.getCol()][loc.getRow()];
 	}
 
-	@Override
+	
 	public Unit put(Location loc, Unit U)
 	{
 		if(!isValid(loc))
@@ -54,12 +54,12 @@ public class DefaultGrid implements Grid
 		
 		int r = loc.getRow();
 		int c = loc.getCol();
-		U.placeSelfOnGrid(new Location(c, r), this);
+		U.placeSelfOnGrid(new Location(c, r));
 		occupants[c][r] = U;
 		return U;
 	}
 	
-	@Override
+	
 	public Unit remove(Location loc)
 	{
 		if(!isValid(loc))
@@ -74,7 +74,7 @@ public class DefaultGrid implements Grid
 		return temp;
 	}
 
-	@Override
+	
 	public ArrayList getEmptyAdjacentLocations(Location loc)
 	{
 		ArrayList<Location> neighbors = getNeighbors(loc);
@@ -97,7 +97,7 @@ public class DefaultGrid implements Grid
 		return neighbors;
 	}
 
-	@Override
+	
 	public ArrayList getOccupiedLocations(Location loc)
 	{
 		ArrayList<Location> locations = new ArrayList();
@@ -115,7 +115,7 @@ public class DefaultGrid implements Grid
 		return locations;
 	}
 
-	@Override
+	
 	public ArrayList getOccupiedAdjacentLocations(Location loc)
 	{
 		ArrayList<Location> neighbors = getNeighbors(loc);
@@ -138,7 +138,7 @@ public class DefaultGrid implements Grid
 		return neighbors;
 	}
 
-	@Override
+	
 	public ArrayList getValidAdjacentLocations(Location loc)
 	{
 		ArrayList<Location> neighbors = getEmptyAdjacentLocations(loc);
@@ -153,25 +153,25 @@ public class DefaultGrid implements Grid
 		return neighbors;
 	}
 
-	@Override
+	
 	public ArrayList getNeighbors(Location loc)
 	{
 		return loc.getNeighbors();
 	}
 
-	@Override
+	
 	public int getNumCols()
 	{
 		return occupants.length;
 	}
 
-	@Override
+	
 	public int getNumRows()
 	{
 		return occupants[0].length;
 	}
 
-	@Override
+	
 	public boolean isValid(Location loc)
 	{
 		boolean c = loc.getCol() >= 0 && loc.getCol() < getNumCols();
