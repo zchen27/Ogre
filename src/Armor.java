@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /*
  * To change this template, choose Tools | Templates
@@ -58,12 +59,18 @@ public abstract class Armor extends Unit {
 	{
 		
 		attackLocations = new ArrayList();
+		HashSet<Location> valid  = new HashSet();
+		valid.add(this.getLocation());
 		//Iterate through location rings within range	
 		for(int i = 0; i < getRange(); i++)
 		{
-			
+			for(Location l: valid)
+			{
+				valid.addAll(l.getNeighbors());
+			}
 		}
-		return null;
+		valid.remove(this.getLocation());
+		return new ArrayList(valid);
 	}
 	
 }

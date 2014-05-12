@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  *
  * @author zchen0704
- * @param <Unit>
+ * 
  */
 public class DefaultGrid
 {
@@ -42,7 +42,7 @@ public class DefaultGrid
 		
 		int r = loc.getRow();
 		int c = loc.getCol();
-		U.placeSelfOnGrid(new Location(c, r));
+		U.placeSelfOnGrid(new Location(c, r), this);
 		occupants[c][r] = U;
 		return U;
 	}
