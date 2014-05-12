@@ -34,7 +34,7 @@ public class HumanPlayer implements Player
 	{
 		if((u instanceof Armor))
 		{
-			((Armor) u).attack(loc);
+			((Armor) u).attack(loc, module);
 		}
 		throw new UnsupportedOperationException("Not supported yet.");
 	}

@@ -15,19 +15,7 @@ import java.util.Map;
 public class DefaultGrid
 {
 
-	private Unit[][] occupants;
-	
-	public DefaultGrid(int c, int r)
-	{
-		if(r > 0 && c > 0)
-		{
-			occupants = new Unit[c][r];
-		}
-		else
-		{
-			throw new IllegalArgumentException(c + " by " + r + " is not a valid size");
-		}
-	}
+	private static Unit[][] occupants;
 	
 	public DefaultGrid()
 	{
