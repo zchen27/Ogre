@@ -12,7 +12,7 @@ import java.util.Map;
  * @author zchen0704
  * 
  */
-public class DefaultGrid
+public class DefaultGrid implements Grid
 {
 
 	private static Unit[][] occupants;
