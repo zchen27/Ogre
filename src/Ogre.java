@@ -21,49 +21,49 @@ public abstract class Ogre extends Unit {
 	
 	public abstract int getSecondaryBattery();
 	
-	public abstract int getMissileTube();
+	//public abstract int getMissileTube();
 	
-	public abstract int getInternalMissiles();
+	//public abstract int getInternalMissiles();
 	
 	public abstract int getExternalMissiles();
 	
 	public abstract String getClassName();
 	
-	public abstract String getUnitName();
+	//public abstract String getUnitName();
 	
-	public abstract int setTracks(int n);
+	public abstract void setTracks(int n);
 	
-	public abstract int setMainBattery(int n);
+	public abstract void setMainBattery(int n);
 	
-	public abstract int setSecondaryBattery(int n);
+	public abstract void setSecondaryBattery(int n);
 	
-	public abstract int setMissileTube(int n);
+	//public abstract int setMissileTube(int n);
 	
-	public abstract int setInternalMissiles(int n);
+	//public abstract int setInternalMissiles(int n);
 	
-	public abstract int setExternalMissiles(int n);
+	public abstract void setExternalMissiles(int n);
 	
-	public void mainBatteryAttack(Location loc)
+	public void mainBatteryAttack(Grid grid, Location loc)
+	{
+		//grid.get(loc)
+	}
+
+	public void secondaryBatteryAttack(Grid grid, Location loc)
 	{
 		//
 	}
 
-	public void secondaryBatteryAttack(Location loc)
+	public void externaMissileAttack(Grid grid, Location loc)
 	{
 		//
 	}
 
-	public void externaMissileAttack(Location loc)
-	{
-		//
-	}
-
-	public void internalMissileAttack(Location loc)
+	public void internalMissileAttack(Grid grid, Location loc)
 	{
 		//
 	}
 	
-	public void overrun(Location loc)
+	public void overrun(Grid grid)
 	{
 		//
 	}
@@ -83,11 +83,11 @@ public abstract class Ogre extends Unit {
 		setTracks(getTracks() - n);
 	}
 
-	public void killMissileTube()
-	{
-		setMissileTube(getMissileTube() - 1);
-		setInternalMissiles(getInternalMissiles() - 1);
-	}
+	//public void killMissileTube()
+	//{
+	//	setMissileTube(getMissileTube() - 1);
+	//	setInternalMissiles(getInternalMissiles() - 1);
+	//}
 
 	public void killExternalMissiles()
 	{

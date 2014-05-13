@@ -24,6 +24,9 @@ public abstract class Unit {
     private Location loc;
     private Grid grid;
     
+    private int attackDamage;
+    private int defenseStrength;
+    
 	private ArrayList<Location> fringes = new ArrayList<Location>();
 	private HashSet<Location> moves = new HashSet<Location>();
     

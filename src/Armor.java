@@ -15,7 +15,6 @@ public abstract class Armor extends Unit {
 
 	private ArrayList<Location> attackLocations;
 	private Status status;
-	private int attackDamage;
 
 	public void disable()
 	{
