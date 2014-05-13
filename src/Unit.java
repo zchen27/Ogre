@@ -89,6 +89,7 @@ public abstract class Unit {
 				j--;
 			} else {
 				for(int f=0; f<fringes.size(); f++){
+					System.out.println(j);
 					if(surroundingSet.get(j).equals(fringes.get(f))){
 						surroundingSet.remove(j);
 						j--;
