@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -17,6 +18,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -37,6 +39,7 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 	
 	private JFrame frame;
 	private TestPanel panel;
+	private InfoPanel info;
 	private JPopupMenu popup;
 	private JMenuItem item;
 	private double radius;
@@ -50,6 +53,19 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 	private DefaultGrid grid = new DefaultGrid();
 	private BufferedImage tank;
 	
+	private enum State
+	{
+		MOVE,
+		FIRE,
+		GEVMOVE
+	}
+	
+	
+	private enum Current
+	{
+		HUMAN,
+		COMPUTER,
+	}
 	
 	private class InfoPanel extends JPanel
 	{
@@ -64,6 +80,7 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		public InfoPanel()
 		{
 			location = new JLabel(mouseover.toString());
+			
 			if(selected instanceof Armor)
 			{
 				name = new JLabel(selected.getName());
@@ -85,13 +102,6 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 			this.add(defense);
 			this.add(attack);
 			this.add(range);
-		}
-		
-		@Override
-		public void paintComponent(Graphics g)
-		{
-			super.paintComponent(g);
-			
 		}
 	}
 	
@@ -162,6 +172,9 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		width = radius * 2;
 		height = Math.sqrt(3) * radius;
 		grid.put(new Location("1002"), new HeavyTank());
+		
+		mouseover = new Location("0000");
+		
 		try 
 		{                
 			tank = ImageIO.read(new File("src/tank-heavy.png"));
@@ -170,17 +183,24 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		{
 			ex.printStackTrace();
 		}
+
 		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(new GridLayout(0, 1));
+		frame.setLayout(new GridLayout(2, 1));
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		JPanel container = new JPanel();
+		container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
 		panel = new TestPanel();
 		panel.setLayout(new GridLayout(0,1));
 		panel.addMouseListener(this);
 		panel.addMouseMotionListener(this);
-		frame.add(panel);
-		frame.setContentPane(panel);
+		panel.setMinimumSize(new Dimension(2000, 2000));
+		info = new InfoPanel();
+		container.add(panel);
+		container.add(info);
+		frame.add(container);
+		frame.setContentPane(container);
 		frame.pack();
 		frame.setVisible(true);
 		panel.repaint();
