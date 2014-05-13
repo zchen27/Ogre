@@ -49,6 +49,7 @@ public abstract class Armor extends Unit {
 			if(loc.equals(attackables.get(i))){
 				Result attackResult = game.roll(attackDamage, defense);
 				
+				//attack accessible through unit
 				//change "defense" above to be the defense of the targeted module
 				//NEED TO ADD A STATEMENT HERE FOR LOWERING THE HP OF THE TARGETED MODULE
 				

@@ -18,56 +18,57 @@ public abstract class Ogre extends Unit {
 	public abstract int getTracks();
 
 	public abstract int getMainBattery();
-	
+
 	public abstract int getSecondaryBattery();
-	
+
 	//public abstract int getMissileTube();
-	
+
 	//public abstract int getInternalMissiles();
-	
+
 	public abstract int getExternalMissiles();
-	
+
 	public abstract String getClassName();
-	
+
 	//public abstract String getUnitName();
-	
+
 	public abstract void setTracks(int n);
-	
+
 	public abstract void setMainBattery(int n);
-	
+
 	public abstract void setSecondaryBattery(int n);
-	
+
 	//public abstract int setMissileTube(int n);
-	
+
 	//public abstract int setInternalMissiles(int n);
-	
+
 	public abstract void setExternalMissiles(int n);
-	
+
 	public void mainBatteryAttack(Grid grid, Location loc)
 	{
-		//grid.get(loc)
+		//(grid.get(loc)).setStatus(game.roll(4,(grid.get(loc)).getDefense()))
+		//range: 3
+		//defense: 4
 	}
 
 	public void secondaryBatteryAttack(Grid grid, Location loc)
 	{
-		//
+		//(grid.get(loc)).setStatus(game.roll(3,(grid.get(loc)).getDefense()))
+		//range: 2
+		//defense: 3
 	}
 
 	public void externaMissileAttack(Grid grid, Location loc)
 	{
-		//
+		//(grid.get(loc)).setStatus(game.roll(6,(grid.get(loc)).getDefense()))
+		//range: 5
+		//defense: 3
 	}
 
-	public void internalMissileAttack(Grid grid, Location loc)
-	{
-		//
-	}
-	
 	public void overrun(Grid grid)
 	{
 		//
 	}
-	
+
 	public void killMainBattery()
 	{
 		setMainBattery(getMainBattery() - 1);
@@ -102,11 +103,11 @@ public abstract class Ogre extends Unit {
 
 	@Override public void die()
 	{
-		
+		//
 	}
 
 	public void lastResult(){
-	//
+		//
 	}
 
 }
