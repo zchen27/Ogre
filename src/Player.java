@@ -9,11 +9,10 @@
  */
 public interface Player
 {
-	public void buyUnit(Unit u);
 	
 	public void moveUnit(Unit u, Location loc);
 	
-	public void attack(Unit u, Location loc);
+	public void attack(Unit u, Location loc, String module);
 	
 	public void win();
 	

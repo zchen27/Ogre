@@ -16,13 +16,6 @@ public class HumanPlayer implements Player
 	private ArrayList<Unit> reserves;
 	
 	@Override
-	public void buyUnit(Unit u)
-	{
-		points -= u.getCost();
-		reserves.add(u);
-	}
-
-	@Override
 	public void moveUnit(Unit u, Location loc)
 	{
 		u.move(loc);
@@ -50,11 +43,4 @@ public class HumanPlayer implements Player
 	{
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
-
-	@Override
-	public void attack(Unit u, Location loc)
-	{
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-	
 }
