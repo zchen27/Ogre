@@ -20,6 +20,7 @@ public abstract class Unit {
     private int movement;
 	private int remainingMoves;
 	private boolean alive = true;
+	private ArrayList<Location> validMove = new ArrayList();
     private Location loc;
     private Grid grid;
     
@@ -60,9 +61,37 @@ public abstract class Unit {
         //returns true if location is empty
     }
     
+	private void floodFill(Location loc)
+	{
+		
+		System.out.println("ran");
+		for(int i = 0; i < validMove.size(); i++)
+		{
+			System.out.print(validMove.get(i) + " ");
+		}
+		System.out.println();
+		
+		if(validMove.contains(loc) || loc.isCrater() || remainingMoves <= 0)
+		{
+			System.out.println(validMove.contains(loc) + " " +  loc.isCrater() + " " + remainingMoves);
+			return;
+		}
+		else
+		{
+			validMove.add(loc);
+			remainingMoves--;
+			floodFill(loc.getAdjacentLocation(Location.Direction.N));
+			floodFill(loc.getAdjacentLocation(Location.Direction.NW));
+			floodFill(loc.getAdjacentLocation(Location.Direction.SW));
+			floodFill(loc.getAdjacentLocation(Location.Direction.S));
+			floodFill(loc.getAdjacentLocation(Location.Direction.SE));
+			floodFill(loc.getAdjacentLocation(Location.Direction.NE));
+		}
+	}
+	
     public ArrayList<Location> availableMoves(Grid grid){
 		
-		//Necessary?
+		/*//Necessary?
 		fringes = new ArrayList<Location>();
 		//
 		
@@ -76,7 +105,11 @@ public abstract class Unit {
 		
         Set<Location> fringeSet = new HashSet<Location>(fringes);
         fringes = new ArrayList<Location>(fringeSet);
-		return fringes;
+		return fringes;*/
+		validMove = new ArrayList();
+		remainingMoves = movement;
+		floodFill(getLocation());
+		return validMove;
     }
 	
 	private void surroundingSpots(Location loc, Grid grid){
@@ -89,7 +122,7 @@ public abstract class Unit {
 				j--;
 			} else {
 				for(int f=0; f<fringes.size(); f++){
-					System.out.println(j);
+					System.out.println(j + " Line 93");
 					if(surroundingSet.get(j).equals(fringes.get(f))){
 						surroundingSet.remove(j);
 						j--;

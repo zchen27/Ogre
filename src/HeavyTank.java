@@ -9,38 +9,34 @@
  */
 public class HeavyTank extends Armor
 {
-	private static final int ATTACK = 4;
-	private static final int DEFENSE = 3; 
-	private static final int RANGE = 2;
-	private static final int MOVEMENT = 3;
-	
-	public HeavyTank()
-	{
-		
-	}
-
 	@Override
 	public int getAttack()
 	{
-		return ATTACK;
+		return 4;
 	}
 
 	@Override
 	public int getRange()
 	{
-		return RANGE;
+		return 2;
 	}
 
 	@Override
 	public int getDefense()
 	{
-		return DEFENSE;
+		return 3;
 	}
 
 	@Override
 	public int getMovement()
 	{
-		return MOVEMENT;
+		return 3;
+	}
+
+	@Override
+	public void setMovement(int m)
+	{
+		
 	}
 
 	@Override

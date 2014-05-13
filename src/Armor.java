@@ -48,7 +48,6 @@ public abstract class Armor extends Unit {
 
 		for(int i=0; i<attackables.size(); i++){
 			if(loc.equals(attackables.get(i))){
-				
 				Result attackResult = game.roll(attackDamage, defense);
 				
 				//change "defense" above to be the defense of the targeted module

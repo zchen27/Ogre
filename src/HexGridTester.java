@@ -195,10 +195,9 @@ public class HexGridTester implements ActionListener, MouseListener, MouseMotion
 		panel.setLayout(new GridLayout(0,1));
 		panel.addMouseListener(this);
 		panel.addMouseMotionListener(this);
-		panel.setMinimumSize(new Dimension(2000, 2000));
 		info = new InfoPanel();
 		container.add(panel);
-		container.add(info);
+		//container.add(info);
 		frame.add(container);
 		frame.setContentPane(container);
 		frame.pack();
