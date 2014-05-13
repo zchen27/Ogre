@@ -69,6 +69,7 @@ public abstract class Unit {
         fringes.add(loc);
 		//remainingMoves=movement + 1;
 		remainingMoves=1;
+		System.out.println(loc.toString());
 		//
 		
         surroundingSpots(loc, grid);
@@ -140,6 +141,5 @@ public abstract class Unit {
 	{
 		return alive;
 	}
-
     
 }
